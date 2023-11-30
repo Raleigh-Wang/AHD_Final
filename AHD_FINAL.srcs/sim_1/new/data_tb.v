@@ -62,32 +62,32 @@ module Testbench_DM;
       if ((dout_s != 32'h23331100))
       begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 1 failed");
       end
-      addr_t <= addr_t + 1;
+      
+      
+     addr_t <= addr_t + 1;
       #(10);
-      if ((dout_s[23:0] != 24'h233311))
-      begin
+      if ((dout_s[23:0] != 24'h331100)) begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 2 failed. Expected: %h, Got: %h", 24'h233311, dout_s[23:0]);
       end
       
       rm <= 3'b001;
       #(10);
-      if ((dout_s != 32'h00000011))
-      begin
+      if ((dout_s != 32'h00000000)) begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 3 failed. Expected: %h, Got: %h", 32'h00000011, dout_s);
       end
       
       rm <= 3'b011;
       addr_t <= addr_t + 1;
       #(10);
-      if ((dout_s != 32'h00002333))
-      begin
+      if ((dout_s != 32'h00001100)) begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 4 failed. Expected: %h, Got: %h", 32'h00002333, dout_s);
       end
+
       
       rm <= 3'b001;
       addr_t <= addr_t - (8 + 2);
@@ -95,7 +95,7 @@ module Testbench_DM;
       if ((dout_s != 32'h000000ef))
       begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 5 failed");
       end
       
       rm <= 3'b111;
@@ -103,7 +103,7 @@ module Testbench_DM;
       if ((dout_s != 32'h11abcdef))
       begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 6 failed");
       end
       
       clr <= 1'b0;
@@ -111,7 +111,7 @@ module Testbench_DM;
       if ((dout_s != 32'h00000000))
       begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 7 failed");
       end
       
       clr <= 1'b1;
@@ -120,7 +120,7 @@ module Testbench_DM;
       if ((dout_s != 32'h00000000))
       begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 8 failed");
       end
       
       rm <= 3'b111;
@@ -129,7 +129,7 @@ module Testbench_DM;
       if ((dout_s != 32'h11abcdef))
       begin
          $write("FAILURE: ");
-         $display("failed");
+         $display("case 9 failed");
       end
       
       $display("All tests passed successfully!");
@@ -137,4 +137,5 @@ module Testbench_DM;
       end
       
 endmodule
+
 
